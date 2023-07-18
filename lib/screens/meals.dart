@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:meals/models/category.dart';
 import 'package:meals/models/meal.dart';
+import 'package:meals/widgets/meal_item.dart';
 
 class MealsScreen extends StatelessWidget {
   const MealsScreen({super.key, required this.category, required this.meals});
@@ -18,7 +19,7 @@ class MealsScreen extends StatelessWidget {
 
     Widget content = ListView.builder(
       itemCount: filteredMeals.length,
-      itemBuilder: ((context, index) => Text(filteredMeals[index].title)),
+      itemBuilder: ((context, index) => MealItem(meal: filteredMeals[index])),
     );
 
     if (meals.isEmpty) {
