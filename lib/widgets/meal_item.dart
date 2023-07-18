@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:meals/models/meal.dart';
+import 'package:meals/widgets/meal_item_trait.dart';
 import 'package:transparent_image/transparent_image.dart';
 
 class MealItem extends StatelessWidget {
@@ -53,15 +54,21 @@ class MealItem extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(meal.duration.toString()),
+                        MealItemTrait(
+                            icon: Icons.schedule,
+                            label: '${meal.duration} min'),
                         const SizedBox(
                           width: 10,
                         ),
-                        Text(meal.complexity.name),
+                        MealItemTrait(
+                            icon: Icons.work,
+                            label: meal.complexity.name.toUpperCase()),
                         const SizedBox(
                           width: 10,
                         ),
-                        Text(meal.affordability.name),
+                        MealItemTrait(
+                            icon: Icons.attach_money,
+                            label: meal.affordability.name.toUpperCase())
                       ],
                     )
                   ],
