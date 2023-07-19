@@ -1,25 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:meals/models/category.dart';
 import 'package:meals/models/meal.dart';
 import 'package:meals/widgets/meal_item.dart';
 
 class MealsScreen extends StatelessWidget {
-  const MealsScreen({super.key, required this.category, required this.meals});
+  const MealsScreen({super.key, this.title, required this.meals});
 
-  final Category category;
+  final String? title;
   final List<Meal> meals;
 
   @override
   Widget build(BuildContext context) {
-    List<Meal> filteredMeals = meals
-        .where(
-          (meal) => meal.categories.contains(category.id),
-        )
-        .toList();
-
     Widget content = ListView.builder(
-      itemCount: filteredMeals.length,
-      itemBuilder: ((context, index) => MealItem(meal: filteredMeals[index])),
+      itemCount: meals.length,
+      itemBuilder: ((context, index) => MealItem(meal: meals[index])),
     );
 
     if (meals.isEmpty) {
@@ -47,9 +40,14 @@ class MealsScreen extends StatelessWidget {
       );
     }
 
+    // this case will be for the favorites screen
+    if (title == null) {
+      return content;
+    }
+
     return Scaffold(
       appBar: AppBar(
-        title: Text(category.title),
+        title: Text(title!),
       ),
       body: content,
     );
