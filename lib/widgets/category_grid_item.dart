@@ -5,9 +5,11 @@ import 'package:meals/models/meal.dart';
 import 'package:meals/screens/meals.dart';
 
 class CategoryGridItem extends StatelessWidget {
-  const CategoryGridItem({super.key, required this.category});
+  const CategoryGridItem(
+      {super.key, required this.category, required this.onToggleFavorite});
 
   final Category category;
+  final void Function(Meal meal) onToggleFavorite;
   @override
   Widget build(BuildContext context) {
     List<Meal> filteredMeals = dummyMeals
@@ -20,8 +22,10 @@ class CategoryGridItem extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (ctx) =>
-                MealsScreen(title: category.title, meals: filteredMeals),
+            builder: (ctx) => MealsScreen(
+                title: category.title,
+                meals: filteredMeals,
+                onToggleFavorite: onToggleFavorite),
           ),
         );
       },
