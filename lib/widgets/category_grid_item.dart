@@ -1,4 +1,3 @@
-import 'package:meals/data/dummy_data.dart';
 import 'package:meals/models/category.dart';
 import 'package:flutter/material.dart';
 import 'package:meals/models/meal.dart';
@@ -6,13 +5,17 @@ import 'package:meals/screens/meals.dart';
 
 class CategoryGridItem extends StatelessWidget {
   const CategoryGridItem(
-      {super.key, required this.category, required this.onToggleFavorite});
+      {super.key,
+      required this.availableMeals,
+      required this.category,
+      required this.onToggleFavorite});
 
   final Category category;
+  final List<Meal> availableMeals;
   final void Function(Meal meal) onToggleFavorite;
   @override
   Widget build(BuildContext context) {
-    List<Meal> filteredMeals = dummyMeals
+    List<Meal> filteredMeals = availableMeals
         .where(
           (meal) => meal.categories.contains(category.id),
         )
