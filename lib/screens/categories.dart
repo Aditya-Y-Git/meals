@@ -4,10 +4,33 @@ import 'package:meals/data/dummy_data.dart';
 import 'package:meals/models/meal.dart';
 import 'package:meals/widgets/category_grid_item.dart';
 
-class CategoriesScreen extends StatelessWidget {
+class CategoriesScreen extends StatefulWidget {
   const CategoriesScreen({super.key, required this.availableMeals});
 
   final List<Meal> availableMeals;
+
+  @override
+  State<CategoriesScreen> createState() => _CategoriesScreenState();
+}
+
+class _CategoriesScreenState extends State<CategoriesScreen>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _animationController;
+
+  @override
+  void initState() {
+    super.initState();
+    _animationController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 300),
+    );
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(context) {
@@ -21,7 +44,7 @@ class CategoriesScreen extends StatelessWidget {
       ),
       children: availableCategories
           .map((category) => CategoryGridItem(
-              availableMeals: availableMeals, category: category))
+              availableMeals: widget.availableMeals, category: category))
           .toList(),
     );
   }
