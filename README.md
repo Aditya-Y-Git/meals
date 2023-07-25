@@ -1,16 +1,19 @@
-# meals
+## Instructions to Run the Code
 
-A new Flutter project.
+To run this App code on your local machine, follow these steps:
 
-## Getting Started
+1. Make sure you have Flutter and Dart installed on your system. For installation instructions, refer to the official Flutter documentation: (https://flutter.dev/docs/get-started/install)
 
-This project is a starting point for a Flutter application.
+2. Clone the repository or download the source code of the Seat Finder App to your local machine.
 
-A few resources to get you started if this is your first Flutter project:
+3. Open the project in your preferred code editor or IDE.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+4. Connect an emulator or physical device to your computer.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+5. Open a terminal or command prompt in the project directory.
+
+6. Run the following command to install the required dependencies: `flutter pub get`
+
+7. Run the app using the following command: `flutter run`
+
+This command will build the app and launch it on the connected device or emulator.
